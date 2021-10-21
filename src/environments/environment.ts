@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  ms_datnek_host: 'http://localhost:9030'
 };
 
 /*

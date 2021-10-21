@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'assets/css/bootstrap.min.css';
+@import 'assets/css/select2.min.css';
+@import 'assets/css/bootstrap-datetimepicker.min.css';
+@import 'assets/css/dataTables.bootstrap4.min.css';

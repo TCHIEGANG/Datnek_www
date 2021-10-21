@@ -1,0 +1,101 @@
+<div class="container">
+<div class="row">
+  <div class="col">
+    <h4 class="page-title" style="color: #27A544">{{selectedLanguage.title}}</h4>
+    <h5>{{'language.add'|translate}}</h5>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-6">
+          <label class="datnek-label">{{'language.choice'|translate}}</label>
+          <div class="form-group">
+            <select *ngIf="languageLevel !== undefined" class="form-control select" required
+                    [ngClass]="{ 'is-invalid': submitted && errors.selectedLanguage, 'is-valid': languageLevel }"
+                    (change)="onChangeSelectedLanguage($event)">
+              <option disabled>{{'language.select'|translate}}</option>
+              <option [ngValue]="languageLevel" *ngFor="let level of levels" [selected]="level.code === languageLevel">{{level.label}}</option>
+            </select>
+            <select *ngIf="languageLevel === undefined" class="form-control select" required
+                    [ngClass]="{ 'is-invalid': submitted && errors.selectedLanguage, 'is-valid': languageLevel }"
+                    (change)="onChangeSelectedLanguage($event)">
+              <option disabled selected>{{'language.select'|translate}}</option>
+              <option [ngValue]="languageLevel" *ngFor="let level of levels">{{level.label}}</option>
+            </select>
+            <small class="text-danger" *ngIf="errors.selectedLanguage">{{errors.selectedLanguage}}</small>
+          </div>
+        </div>
+        <div class="col-6">
+          <label class="datnek-label">{{'language.spoken'|translate}}</label>
+          <div class="form-group">
+            <select *ngIf="languageLevel !== undefined" class="form-control select" required
+                    [ngClass]="{ 'is-invalid': submitted && errors.selectedLanguage, 'is-valid': languageLevel }"
+                    (change)="onChangeSelectedLanguage($event)">
+              <option disabled>{{'language.select'|translate}}</option>
+              <option [ngValue]="languageLevel" *ngFor="let level of levels" [selected]="level.code === languageLevel">{{level.label}}</option>
+            </select>
+            <select *ngIf="languageLevel === undefined" class="form-control select" required
+                    [ngClass]="{ 'is-invalid': submitted && errors.selectedLanguage, 'is-valid': languageLevel }"
+                    (change)="onChangeSelectedLanguage($event)">
+              <option disabled selected>{{'language.select'|translate}}</option>
+              <option [ngValue]="languageLevel" *ngFor="let level of levels">{{level.label}}</option>
+            </select>
+            <small class="text-danger" *ngIf="errors.selectedLanguage">{{errors.selectedLanguage}}</small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="datnek-label">{{'language.written'|translate}}</label>
+          <div class="form-group">
+            <select *ngIf="languageLevel !== undefined" class="form-control select" required
+                    [ngClass]="{ 'is-invalid': submitted && errors.selectedLanguage, 'is-valid': languageLevel }"
+                    (change)="onChangeSelectedLanguage($event)">
+              <option disabled>{{'language.select'|translate}}</option>
+              <option [ngValue]="languageLevel" *ngFor="let level of levels" [selected]="level.code === languageLevel">{{level.label}}</option>
+            </select>
+            <select *ngIf="languageLevel === undefined" class="form-control select" required
+                    [ngClass]="{ 'is-invalid': submitted && errors.selectedLanguage, 'is-valid': languageLevel }"
+                    (change)="onChangeSelectedLanguage($event)">
+              <option disabled selected>{{'language.select'|translate}}</option>
+              <option [ngValue]="languageLevel" *ngFor="let level of levels">{{level.label}}</option>
+            </select>
+            <small class="text-danger" *ngIf="errors.selectedLanguage">{{errors.selectedLanguage}}</small>
+          </div>
+        </div>
+        <div class="col-6">
+          <label class="datnek-label">{{'language.understanding'|translate}}</label>
+          <div class="form-group">
+            <select *ngIf="languageLevel !== undefined" class="form-control select" required
+                    [ngClass]="{ 'is-invalid': submitted && errors.selectedLanguage, 'is-valid': languageLevel }"
+                    (change)="onChangeSelectedLanguage($event)">
+              <option disabled>{{'language.select'|translate}}</option>
+              <option [ngValue]="languageLevel" *ngFor="let level of levels" [selected]="level.code === languageLevel">{{level.label}}</option>
+            </select>
+            <select *ngIf="languageLevel === undefined" class="form-control select" required
+                    [ngClass]="{ 'is-invalid': submitted && errors.selectedLanguage, 'is-valid': languageLevel }"
+                    (change)="onChangeSelectedLanguage($event)">
+              <option disabled selected>{{'language.select'|translate}}</option>
+              <option [ngValue]="languageLevel" *ngFor="let level of levels">{{level.label}}</option>
+            </select>
+            <small class="text-danger" *ngIf="errors.selectedLanguage">{{errors.selectedLanguage}}</small>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" style="background-color: #008CC9;font-size: 15px" (click)="onClickRegister()">{{'language.save'|translate}}</button>
+    </div>
+
+      <div class="col-3 cn" style="background-color: #008CC9; border-radius: 6px; color: white;">
+        <div style="text-align: center">
+          <h5>{{'language.number'|translate}}</h5>
+          <h6>2</h6>
+        </div>
+
+      </div>
+
+
+  </div>
+
+</div>

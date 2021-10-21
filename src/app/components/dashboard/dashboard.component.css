@@ -1,0 +1,99 @@
+.datnek-label {
+  font-size: medium;
+  font-weight: bold;
+  font-style: italic;
+  color: #16152d;
+}
+
+.tab-h{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+
+.edit-language-tab{
+  cursor: pointer;
+}
+
+.edit-language-tab .active{
+  background-color: lightgray;
+}
+
+.li-3-style{
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+}
+
+.roles-menu {
+  margin-top: 20px;
+}
+.roles-menu > ul {
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.roles-menu > ul > li {
+  display: block;
+  position: relative;
+}
+.roles-menu > ul > li > a {
+  border-left: 3px solid transparent;
+  color: #333;
+  display: block;
+  padding: 10px 15px;
+  position: relative;
+}
+.roles-menu > ul > li.active > a {
+  border-color: #16152D;
+  color: #16152D;
+}
+.roles-menu > ul > li > a:hover {
+  border-color: #16152D;
+  background-color: #eee;
+}
+
+nav
+{
+  display: inline-block;
+}
+nav ul
+{
+  padding-top: 25px;
+  list-style-type: none;
+}
+nav li
+{
+  display: inline-block;
+  margin-right: 10px;
+  border: 1px solid black;
+  border-top-right-radius: 10px 10px;
+  border-top-left-radius: 10px 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+nav a
+{
+  font-size: 1em;
+  color: #16162D;
+  text-decoration: none;
+}
+
+.datnek-modal-button{
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid #16162d;
+  color: white;
+  background-color: gray;
+  float: right;
+
+}
+
+.staff-msg {
+  margin-top: 30px;
+}

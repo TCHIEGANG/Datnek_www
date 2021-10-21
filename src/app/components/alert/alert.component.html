@@ -1,0 +1,7 @@
+<div class="row m-l-5 m-r-10" *ngIf="alert.display">
+  <div class="col-12 alert alert-{{alert.class}}">
+    <button type="button" class="close" (click)="onClickClose()" >&times;</button>
+    <strong>{{alert.title}}!</strong> {{alert.message}}.
+  </div>
+</div>
+

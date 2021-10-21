@@ -1,0 +1,20 @@
+{
+  "dashboard.languages.english": "Anglais",
+  "dashboard.languages.french": "Français",
+  "dashboard.languages.netherlander": "Néerlandais",
+  "dashboard.modal.opened": "Modal ouvert",
+  "dashboard.modal.closed": "Modal fermé",
+  "language.add": "Ajouter une langue",
+  "language.choice": "Choisir une langue * ",
+  "language.select": "Sélectionner un élément",
+  "language.spoken": "Niveau parlé ",
+  "language.written": "Niveau écrit",
+  "language.understanding": "Niveau compréhension",
+  "language.save": "Enregistrer",
+  "language.number": "Nombre de langue",
+  "languageList.list": "Liste des langues",
+  "languageList.delete": "Supprimer",
+  "languageList.detail": "Détail",
+  "languageList.update": "Modifier"
+
+}

@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="page-title">{{'languageList.list'|translate}}</h4>
+    </div>
+    <!--<div class="col-sm-8 col-9 text-right m-b-20">
+      <a href="" class="btn btn-primary float-right btn-rounded"><em class="fa fa-plus"></em> créer un compte</a>
+    </div>-->
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tbody>
+          <tr *ngFor="let language of languages">
+            <td><span  style="font-weight: bold">{{language.title}}</span></td>
+            <td><span  style="font-weight: bold ; font-size: 13px">{{'language.spoken'|translate}} : </span><span style="font-size: 13px"> {{language.title}}</span></td>
+            <td><span  style="font-weight: bold; font-size: 13px">{{'language.written'|translate}} : </span><span style="font-size: 13px"> {{language.title}}</span></td>
+            <td><span  style="font-weight: bold; font-size: 13px">{{'language.understanding'|translate}} : </span><span style="font-size: 13px"> {{language.title}}</span></td>
+            <td>
+              <div class="container">
+                <div class="row">
+                  <button class="btn btn-primary" style="background-color: #27A544; font-size: 12px" (click)="onClickUpdate()">{{'languageList.update'|translate}}</button>
+                  <button class="btn btn-primary" style="background-color: #FF9800; margin: 0px 3px 0px 3px; font-size: 12px" (click)="onClickDetail(modalData, language)">{{'languageList.detail'|translate}}</button>
+                  <button class="btn btn-primary" style="background-color: #D11124;font-size: 12px" (click)="onClickDelete()">{{'languageList.delete'|translate}}</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{'languageList.detail'|translate}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <span  style="font-weight: bold">{{currentLanguage.title}}</span><br>
+    <span  style="font-weight: bold">{{'language.spoken'|translate}} : </span><span> {{currentLanguage.title}}</span><br>
+    <span  style="font-weight: bold">{{'language.written'|translate}} : </span><span> {{currentLanguage.title}}</span><br>
+    <span  style="font-weight: bold">{{'language.understanding'|translate}} : </span><span> {{currentLanguage.title}}</span>
+  </div>
+
+</ng-template>

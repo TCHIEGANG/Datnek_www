@@ -1,0 +1,10 @@
+.datnek-label {
+  font-size: medium;
+  font-style: italic;
+  color: #16152d;
+}
+.cn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

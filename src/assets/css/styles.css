@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+.custom-badge {
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 12px;
+  min-width: 95px;
+  padding: 1px 10px;
+  text-align: center;
+}
+
+.status-red,
+a.status-red {
+  background-color: #ffe5e6;
+  border: 1px solid #fe0000;
+  color: #fe0000;
+}
+.status-green,
+a.status-green {
+  background-color: #e5faf3;
+  border: 1px solid #00ce7c;
+  color: #00ce7c;
+}
+.action-icon {
+  color: #777;
+  font-size: 18px;
+  padding: 0 10px;
+  display: inline-block;
+}
+.page-title {
+  color: #565656;
+  font-size: 21px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
