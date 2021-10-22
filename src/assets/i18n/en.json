@@ -5,15 +5,20 @@
   "dashboard.modal.opened": "Modal opened",
   "dashboard.modal.closed": "Modal closed",
   "language.add": "Add a language",
-  "language.choice": "Choose a language * ",
+  "language.choice": "Choose a language ",
   "language.select": "Select an item",
   "language.spoken": "Spoken level ",
   "language.written": "Written level ",
+  "language.level1": "Elémentaire - a",
+  "language.level2": "Pré-intermédiare -a",
+  "language.level3": "Intermédiare -a",
+  "language.level4": "Courant -a",
   "language.understanding": "Understanding level ",
   "language.save": "Save",
   "language.number": "Number of languages",
   "languageList.list": "List of languages",
   "languageList.delete": "Delete",
   "languageList.detail": "Detail",
-  "languageList.update": "Update"
+  "languageList.update": "Update",
+  "language.required": "required"
 }

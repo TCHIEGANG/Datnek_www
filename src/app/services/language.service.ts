@@ -18,10 +18,10 @@ export class LanguageService {
   }
 
   /**
-   * find all languages
+   * find languages infos
    */
-  findAllLanguages(): Observable<any> {
-    return this.httpClient.get<any>(environment.ms_datnek_host + this.url, this.httpOptions);
+  findLanguageInfos(locale: string): Observable<any> {
+    return this.httpClient.get<any>(environment.ms_datnek_host + this.url + '/language/' + locale , this.httpOptions);
   }
 
   /**

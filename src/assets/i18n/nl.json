@@ -5,15 +5,20 @@
   "dashboard.modal.opened": "Modaal openen",
   "dashboard.modal.closed": "Gesloten modaal",
   "language.add": "Een taal toevoegen",
-  "language.choice": "Kies een taal * ",
+  "language.choice": "Kies een taal ",
   "language.select": "Selecteer een item",
   "language.spoken": "Gesproken niveau ",
   "language.written": "Schriftelijk niveau ",
+  "language.level1": "Elémentaire -n",
+  "language.level2": "Pré-intermédiare -n",
+  "language.level3": "Intermédiare -n",
+  "language.level4": "Courant -n",
   "language.understanding": "Niveau begrijpen ",
   "language.save": "Registreer",
   "language.number": "Aantal talen",
   "languageList.list": "Lijst met talen",
   "languageList.delete": "Verwijderen",
   "languageList.detail": "Detail",
-  "languageList.update": "Bewerken"
+  "languageList.update": "Bewerken",
+  "language.required": "required"
 }

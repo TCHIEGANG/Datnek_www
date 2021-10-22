@@ -4,6 +4,8 @@ import {InfoLanguageType} from "../../models/language/infoLanguageType";
 import {LanguageHelper} from "../../helpers/language-helper";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TranslateService} from "@ngx-translate/core";
+import {MobileService} from "../../services/mobile/mobile.service";
+import {LanguageService} from "../../services/language.service";
 
 @Component({
   selector: 'app-languages-list',
@@ -13,21 +15,25 @@ import {TranslateService} from "@ngx-translate/core";
 export class LanguagesListComponent implements OnInit {
 
   loading: boolean;
-  languages: InfoLanguageType[] = LanguageHelper.languageTypes;
-  allLanguages: Language[] = [];
+  //languages: InfoLanguageType[] = LanguageHelper.languageTypes;
+  @Input() languages: Language[];
   roles: string[] = [];
   selectedRole: string;
   nameSearch: string;
   emailSearch: string;
   closeModal: string;
-  currentLanguage: InfoLanguageType = {} as InfoLanguageType;
+  currentLanguage: Language = {} as Language;
   @Output() refreshEvent = new EventEmitter<boolean>();
   @Input() currentLanguageCode: string;
+  public screenWidth: number = window.innerWidth;
 
-  constructor(private modalService: NgbModal, public translate: TranslateService) { }
+  constructor(private modalService: NgbModal, public translate: TranslateService,
+              private mobileService: MobileService,
+              private languageService: LanguageService) { }
 
   ngOnInit(): void {
-    this.initRoles();
+
+
     this.translate.use(this.currentLanguageCode).subscribe(
       value => {
         // value is our translated string
@@ -35,63 +41,35 @@ export class LanguagesListComponent implements OnInit {
       });
   }
 
-  initRoles(): void {
-    this.roles.push('Admin');
-    this.roles.push('Utilisateur');
+
+
+
+
+  onClickUpdate(language: Language): void {
+    this.languageService.updateLanguage(language).subscribe(response => {
+      this.loading = false;
+    }, (error) => {
+      //this.alert = {display: true, class: 'danger', title: 'Erreur ', message: '  Données incorrectes'};
+      this.loading = false;
+    });
   }
 
-  /*public name(account: Account): string{
-    return StringHelper.truncateName(account, 20);
+  onClickDelete(id: string): void {
+    this.languageService.deleteLanguage(id).subscribe(response => {
+      this.loading = false;
+    }, (error) => {
+      //this.alert = {display: true, class: 'danger', title: 'Erreur ', message: '  Données incorrectes'};
+      this.loading = false;
+    });
   }
-
-  role(account: Account): string{
-    return account && account.role && account.role === 'USER' ? 'Utilisateur' : 'Admin';
-  }*/
-
-  onChangeRole(role: string): void {
-    // console.log(role);
-    // this.accounts = [];
-    // this.allAccounts.forEach((elt, index) => {
-    //   if (elt.role.toLowerCase().includes(role.toLowerCase())){
-    //     this.accounts.push(elt);
-    //   }
-    // });
-    //
-    // console.log(this.accounts);
+  isMobile(): boolean {
+    return this.mobileService.isMobile(this.screenWidth);
   }
-
-  onKeyupSearchAccountName(): void {
-    /*this.accounts = [];
-    this.allAccounts.forEach((elt, index) => {
-      if (elt.firstname.toLowerCase().includes(this.nameSearch.toLowerCase()) ||
-        elt.lastname.toLowerCase().includes(this.nameSearch.toLowerCase())){
-        this.accounts.push(elt);
-      }
-    });*/
-  }
-
-  onKeyupSearchAccountEmail(): void {
-    /*this.accounts = [];
-    this.allAccounts.forEach((elt, index) => {
-      if (elt.email.toLowerCase().includes(this.emailSearch.toLowerCase())){
-        this.accounts.push(elt);
-      }
-    });*/
-  }
-
-  onClickUpdate(): void {
-
-  }
-
-  onClickDelete(): void {
-
-  }
-
 
   onClickDetail(content: any, language: any): void {
     this.refreshEvent.emit(true);
+    this.currentLanguage = language;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
-      this.currentLanguage = language;
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.refreshEvent.emit(false);

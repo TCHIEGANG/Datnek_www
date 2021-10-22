@@ -20,12 +20,20 @@
     </div>
 </div>
   <div class="row" style="margin-top: 25px">
-    <app-language class="col-12" [selectedLanguage] = "selectedLanguage"></app-language>
+    <app-language class="col-12" [selectedLanguage] = "selectedLanguage"
+                  (newLanguageEvent) = "onNewLanguageEvent($event)"
+                  [languages] = "languageList"
+                  [levels] = "languageInfos.levels"
+                  [languageTypes]= "languageInfos.languageTypes"
+    >
+
+    </app-language>
   </div>
   <div class="row" style="margin-top: 25px">
     <app-languages-list class="container"
                         (refreshEvent)="onRefreshEvent($event)"
                         [currentLanguageCode] = "currentLanguageCode"
+                        [languages] = "languageList"
     ></app-languages-list>
   </div>
 </div>

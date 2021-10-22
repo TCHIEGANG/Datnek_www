@@ -1,6 +1,6 @@
 export enum Level {
-  ELEMENTAIRE,
-  INTERMEDIARE,
-  PRE_INTERMEDIARE,
-  COURANT
+  Elémentaire,
+  Pré_intermédiaire,
+  Intermédiaire,
+  Courant
 }

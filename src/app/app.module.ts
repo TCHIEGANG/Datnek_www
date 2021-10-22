@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HeaderComponent } from './components/header/header.component';
 import { LanguageComponent } from './components/language/language.component';
 import {RouterModule} from "@angular/router";
 import { AlertComponent } from './components/alert/alert.component';
@@ -13,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { LoadingComponent } from './components/loading/loading.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -22,10 +22,10 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeaderComponent,
     LanguageComponent,
     AlertComponent,
-    LanguagesListComponent
+    LanguagesListComponent,
+    LoadingComponent
   ],
     imports: [
         BrowserModule,
