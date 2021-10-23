@@ -25,6 +25,13 @@ export class LanguageService {
   }
 
   /**
+   * find all languages
+   */
+  findLanguages(): Observable<any> {
+    return this.httpClient.get<any>(environment.ms_datnek_host + this.url + '/all/' , this.httpOptions);
+  }
+
+  /**
    * create an language
    */
   createLanguage(language: Language): Observable<any>{

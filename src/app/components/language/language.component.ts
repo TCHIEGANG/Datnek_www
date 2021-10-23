@@ -25,11 +25,11 @@ export class LanguageComponent implements OnInit {
   @Input() languages: Language[] = [];
   @Output() newLanguageEvent = new EventEmitter<Language>();
   @Input() levels: Level[];
-  languageLevel : string;
   @Input() languageTypes: LanguageType[];
+  languageToUpdate: Language;
   public screenWidth: number = window.innerWidth;
 
-  myLanguage: Language = {} as Language;
+  @Input() myLanguage: Language ;
   languageType: LanguageType = {} as LanguageType;
   account: Account  = {} as Account;
 
@@ -55,6 +55,7 @@ export class LanguageComponent implements OnInit {
       }
     });
   }
+
 
   onChangeSpokenLevel(e): void {
     this.errors.spokenLevel = '';
@@ -89,6 +90,7 @@ export class LanguageComponent implements OnInit {
       this.loading = true;
       this.languageService.createLanguage(this.myLanguage).subscribe(response => {
         this.newLanguageEvent.emit(response.resource);
+        this.myLanguage = {} as Language;
         this.loading = false;
       }, (error) => {
         this.alert = {display: true, class: 'danger', title: 'Erreur ', message: '  Données incorrectes'};

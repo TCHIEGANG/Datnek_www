@@ -6,6 +6,7 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TranslateService} from "@ngx-translate/core";
 import {MobileService} from "../../services/mobile/mobile.service";
 import {LanguageService} from "../../services/language.service";
+import {Alert} from "../../models/alert";
 
 @Component({
   selector: 'app-languages-list',
@@ -16,65 +17,61 @@ export class LanguagesListComponent implements OnInit {
 
   loading: boolean;
   //languages: InfoLanguageType[] = LanguageHelper.languageTypes;
-  @Input() languages: Language[];
+  @Input() languageList: Language[];
   roles: string[] = [];
   selectedRole: string;
   nameSearch: string;
   emailSearch: string;
   closeModal: string;
+  languageToDelete: Language = {} as Language;
+  languageToUpdate: Language = {} as Language;
   currentLanguage: Language = {} as Language;
   @Output() refreshEvent = new EventEmitter<boolean>();
+  @Output() newDeletedLanguageEvent = new EventEmitter<Language>();
+  @Output() newUpdateLanguageEvent = new EventEmitter<Language>();
   @Input() currentLanguageCode: string;
   public screenWidth: number = window.innerWidth;
+  alert: Alert = {} as Alert;
+
 
   constructor(private modalService: NgbModal, public translate: TranslateService,
               private mobileService: MobileService,
               private languageService: LanguageService) { }
 
   ngOnInit(): void {
-
-
-    this.translate.use(this.currentLanguageCode).subscribe(
-      value => {
-        // value is our translated string
-        //console.log(value);
-      });
   }
 
-
-
-
-
-  onClickUpdate(language: Language): void {
-    this.languageService.updateLanguage(language).subscribe(response => {
-      this.loading = false;
-    }, (error) => {
-      //this.alert = {display: true, class: 'danger', title: 'Erreur ', message: '  Données incorrectes'};
-      this.loading = false;
-    });
+  onClickUpdate(content: any, language: Language): void {
+    this.languageToUpdate = language;
+    this.openModal(content);
   }
 
-  onClickDelete(id: string): void {
-    this.languageService.deleteLanguage(id).subscribe(response => {
-      this.loading = false;
-    }, (error) => {
-      //this.alert = {display: true, class: 'danger', title: 'Erreur ', message: '  Données incorrectes'};
-      this.loading = false;
-    });
+  onClickDelete(content: any,language: Language): void {
+    this.languageToDelete = language;
+    //localStorage.setItem('languageToDelete', language.idServer);
+    this.openModal(content);
   }
   isMobile(): boolean {
     return this.mobileService.isMobile(this.screenWidth);
   }
 
-  onClickDetail(content: any, language: any): void {
+  openModal(content: any): void{
     this.refreshEvent.emit(true);
-    this.currentLanguage = language;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.refreshEvent.emit(false);
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
     });
+  }
+
+  close(): void {
+    this.modalService.dismissAll();
+  }
+
+  onClickDetail(content: any, language: any): void {
+    this.currentLanguage = language;
+    this.openModal(content);
   }
 
   private getDismissReason(reason: any): string {
@@ -85,5 +82,26 @@ export class LanguagesListComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  onClickConfirmDelete(): void {
+    //const id = localStorage.getItem('languageToDelete');
+    this.languageService.deleteLanguage(this.languageToDelete.idServer).subscribe(response => {
+      this.loading = false;
+      // @ts-ignore
+      this.newDeletedLanguageEvent.emit(this.languageToDelete);
+    }, (error) => {
+      this.alert = {display: true, class: 'danger', title: 'Erreur ', message: '  Langue non supprimée'};
+      this.loading = false;
+    },() => {
+      //localStorage.removeItem('languageToDelete')
+      });
+    this.modalService.dismissAll();
+  }
+
+
+  onClickConfirmUpdate(): void {
+    this.newUpdateLanguageEvent.emit(this.languageToUpdate);
+    this.modalService.dismissAll();
   }
 }

@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row" *ngIf="languages && languages.length > 0">
+<div class="container" *ngIf="!isMobile()">
+  <div class="row" *ngIf="languageList && languageList.length > 0">
     <div class="col">
       <h4 class="page-title">{{'languageList.list'|translate}}</h4>
     </div>
@@ -9,11 +9,11 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12" *ngIf="languages && languages.length > 0">
+    <div class="col-md-12" *ngIf="languageList && languageList.length > 0">
       <div class="table-responsive">
         <table class="table table-striped">
           <tbody>
-          <tr *ngFor="let language of languages">
+          <tr *ngFor="let language of languageList">
             <td><span  style="font-weight: bold ; font-size: 13px" *ngIf="language.languageType">{{language.languageType.content}}</span></td>
             <td><span  style="font-weight: bold ; font-size: 13px" >{{'language.spoken'|translate}} : </span><span style="font-size: 13px" *ngIf="language.spokenLevel"> {{language.spokenLevel.content}}</span></td>
             <td><span  style="font-weight: bold; font-size: 13px" >{{'language.written'|translate}} : </span><span style="font-size: 13px" *ngIf="language.writtenLevel"> {{language.writtenLevel.content}}</span></td>
@@ -21,9 +21,9 @@
             <td>
               <div class="container">
                 <div class="row">
-                  <button class="btn btn-primary" style="background-color: #27A544; font-size: 12px" (click)="onClickUpdate(language)">{{'languageList.update'|translate}}</button>
+                  <button class="btn btn-primary" style="background-color: #27A544; font-size: 12px" (click)="onClickUpdate(modalUpdate, language)">{{'languageList.update'|translate}}</button>
                   <button class="btn btn-primary" style="background-color: #FF9800; margin: 0px 3px 0px 3px; font-size: 12px" (click)="onClickDetail(modalData, language)">{{'languageList.detail'|translate}}</button>
-                  <button class="btn btn-primary" style="background-color: #D11124;font-size: 12px" (click)="onClickDelete(language.idServer)">{{'languageList.delete'|translate}}</button>
+                  <button class="btn btn-primary" style="background-color: #D11124;font-size: 12px" (click)="onClickDelete(modalDelete, language)">{{'languageList.delete'|translate}}</button>
                 </div>
               </div>
             </td>
@@ -36,6 +36,45 @@
   </div>
 </div>
 
+<div class="container" *ngIf="isMobile()">
+  <div class="row" *ngIf="languageList && languageList.length > 0">
+    <div class="col">
+      <h4 class="page-title">{{'languageList.list'|translate}}</h4>
+    </div>
+    <!--<div class="col-sm-8 col-9 text-right m-b-20">
+      <a href="" class="btn btn-primary float-right btn-rounded"><em class="fa fa-plus"></em> créer un compte</a>
+    </div>-->
+  </div>
+
+  <div class="row" *ngIf="languageList && languageList.length > 0">
+        <div class="col-12" *ngFor="let language of languageList" style="background-color: white; margin-bottom: 10px">
+          <div class="row">
+            <div class="col-4">
+              <span  style="font-weight: bold ; font-size: 13px" *ngIf="language.languageType">{{language.languageType.content}}</span>
+            </div>
+            <div class="col-8">
+              <span  style="font-weight: bold ; font-size: 13px" >{{'language.spoken'|translate}} : </span><span style="font-size: 13px" *ngIf="language.spokenLevel"> {{language.spokenLevel.content}}</span>
+            </div>
+          </div>
+          <div class="row" style="margin: 5px 0px">
+            <span  style="font-weight: bold; font-size: 13px" >{{'language.written'|translate}} : </span><span style="font-size: 13px" *ngIf="language.writtenLevel"> {{language.writtenLevel.content}}</span>
+          </div>
+          <div class="row" style="margin: 0px">
+            <span  style="font-weight: bold; font-size: 13px" >{{'language.understanding'|translate}} : </span><span style="font-size: 13px" *ngIf="language.comprehensionLevel"> {{language.comprehensionLevel.content}}</span>
+          </div>
+          <div class="row" style="margin: 5px 0px">
+            <div class="container">
+              <div class="row">
+                <button class="btn btn-primary" style="background-color: #27A544; font-size: 12px" (click)="onClickUpdate(modalUpdate, language)">{{'languageList.update'|translate}}</button>
+                <button class="btn btn-primary" style="background-color: #FF9800; margin: 0px 3px 0px 3px; font-size: 12px" (click)="onClickDetail(modalData, language)">{{'languageList.detail'|translate}}</button>
+                <button class="btn btn-primary" style="background-color: #D11124;font-size: 12px" (click)="onClickDelete(modalDelete, language)">{{'languageList.delete'|translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+
 <!-- Modal -->
 <ng-template #modalData let-modal>
   <div class="modal-header">
@@ -45,10 +84,37 @@
     </button>
   </div>
   <div class="modal-body">
-    <span  style="font-weight: bold">{{currentLanguage.languageType}}</span><br>
-    <span  style="font-weight: bold">{{'language.spoken'|translate}} : </span><span> {{currentLanguage.spokenLevel}}</span><br>
-    <span  style="font-weight: bold">{{'language.written'|translate}} : </span><span> {{currentLanguage.writtenLevel}}</span><br>
-    <span  style="font-weight: bold">{{'language.understanding'|translate}} : </span><span> {{currentLanguage.comprehensionLevel}}</span>
+    <span  style="font-weight: bold">{{currentLanguage.languageType.content}}</span><br>
+    <span  style="font-weight: bold">{{'language.spoken'|translate}} : </span><span> {{currentLanguage.spokenLevel.content}}</span><br>
+    <span  style="font-weight: bold">{{'language.written'|translate}} : </span><span> {{currentLanguage.writtenLevel.content}}</span><br>
+    <span  style="font-weight: bold">{{'language.understanding'|translate}} : </span><span> {{currentLanguage.comprehensionLevel.content}}</span>
   </div>
 
 </ng-template>
+
+<ng-template #modalDelete let-modal >
+  <div>
+    <div class="modal-body text-center" >
+      <img src="./assets/images/symbole-datnek.svg" alt="" width="50" height="46">
+      <h5 style="margin-top: 15px">{{'confirm.delete'|translate}}</h5>
+      <div class="m-t-20">
+        <button type="submit" class="btn btn-white" data-dismiss="modal" (click)="close()" style="margin: 10px">{{'NO'|translate}}</button>
+        <button type="submit" class="btn btn-danger" data-dismiss="modal" (click)="onClickConfirmDelete()" style="margin: 10px">{{'YES'|translate}}</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #modalUpdate let-modal >
+  <div>
+    <div class="modal-body text-center" >
+      <img src="./assets/images/symbole-datnek.svg" alt="" width="50" height="46">
+      <h5 style="margin-top: 15px">{{'confirm.update'|translate}}</h5>
+      <div class="m-t-20">
+        <button type="submit" class="btn btn-white" data-dismiss="modal" (click)="close()" style="margin: 10px">{{'NO'|translate}}</button>
+        <button type="submit" class="btn btn-danger" data-dismiss="modal" (click)="onClickConfirmUpdate()" style="margin: 10px">{{'YES'|translate}}</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

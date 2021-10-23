@@ -20,6 +20,16 @@
   "languageList.list": "Liste des langues",
   "languageList.delete": "Supprimer",
   "languageList.detail": "Détail",
-  "languageList.update": "Modifier"
-
+  "languageList.update": "Modifier",
+  "YES": "OUI",
+  "NO": "NON",
+  "confirm.delete": "Voulez-vous supprimer cette langue ?",
+  "confirm.update": "Voulez-vous modifier cette langue ?",
+  "language.french": "Français",
+  "language.english": "Anglais",
+  "language.dutch": "Néerlandais",
+  "level.elementary": "Elémentaire",
+  "level.pre_Intermediate": "Pré-intermédiaire",
+  "level.intermediate": "Intermédiaire",
+  "level.current": "Courant"
 }

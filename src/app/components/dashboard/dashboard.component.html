@@ -1,4 +1,4 @@
-<div class="container" style="background-color: #F4F4F5">
+<div class="container" style="background-color: #F4F4F5" *ngIf="!isMobile()">
   <div class="row">
     <!--Entetes-->
   <div class="col-10">
@@ -23,6 +23,7 @@
     <app-language class="col-12" [selectedLanguage] = "selectedLanguage"
                   (newLanguageEvent) = "onNewLanguageEvent($event)"
                   [languages] = "languageList"
+                  [myLanguage] = "languageToUpdate"
                   [levels] = "languageInfos.levels"
                   [languageTypes]= "languageInfos.languageTypes"
     >
@@ -33,10 +34,34 @@
     <app-languages-list class="container"
                         (refreshEvent)="onRefreshEvent($event)"
                         [currentLanguageCode] = "currentLanguageCode"
-                        [languages] = "languageList"
+                        [languageList] = "languageList"
+                        (newDeletedLanguageEvent)="onDeletedLanguageEvent($event)"
+                        (newUpdateLanguageEvent)="onUpdateLanguageEvent($event)"
     ></app-languages-list>
   </div>
 </div>
 
+<div class="container" style="background-color: #F4F4F5" *ngIf="isMobile()">
 
+  <div class="row" style="margin-top: 25px">
+    <app-language class="col-12" [selectedLanguage] = "selectedLanguage"
+                  (newLanguageEvent) = "onNewLanguageEvent($event)"
+                  [languages] = "languageList"
+                  [myLanguage] = "languageToUpdate"
+                  [levels] = "languageInfos.levels"
+                  [languageTypes]= "languageInfos.languageTypes"
+    >
+
+    </app-language>
+  </div>
+  <div class="row" style="margin-top: 25px">
+    <app-languages-list class="container"
+                        (refreshEvent)="onRefreshEvent($event)"
+                        [currentLanguageCode] = "currentLanguageCode"
+                        [languageList] = "languageList"
+                        (newDeletedLanguageEvent)="onDeletedLanguageEvent($event)"
+                        (newUpdateLanguageEvent)="onUpdateLanguageEvent($event)"
+    ></app-languages-list>
+  </div>
+</div>
 

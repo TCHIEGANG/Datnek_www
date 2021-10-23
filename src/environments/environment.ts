@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  ms_datnek_host: 'http://localhost:9030'
+  ms_datnek_host: 'http://localhost:9030',
+  defaut_language: 'fr',
+  defaut_position_tab_language: 1,
 };
 
 /*
